@@ -412,9 +412,9 @@ tbody tr.wstart td{border-top:1px solid var(--color-charcoal-ink)}
         <div class="wrap">
           <h2 class="t-section rv" id="h-stories" style="margin-bottom:clamp(32px,5vw,64px);text-align:center">Con chi ho lavorato</h2>
           <div class="stories">
-            <a class="story rv" href="#p-social" data-go="p-social"><span class="ph"><img src="img/sd-abtest.webp" width="900" height="1123" alt="Post Instagram per SD Solution: A/B test creativi sui social" loading="lazy"></span><small>Agenzia di comunicazione</small><h3>SD Solution</h3><p>Caroselli su AI e digital marketing. Per Houseeng anche logo e brand identity.</p><span class="more">Leggi il progetto ↗</span></a>
-            <a class="story rv" style="--d:.1s" href="#p-social" data-go="p-social"><span class="ph"><img src="img/rw-robot.webp" width="900" height="1120" alt="Post Instagram per Restworld: robot nella ristorazione" loading="lazy"></span><small>Start up HO.RE.CA.</small><h3>Restworld</h3><p>Rubriche, illustrazioni e post per una start up di comunicazione nella ristorazione.</p><span class="more">Leggi il progetto ↗</span></a>
-            <a class="story rv" style="--d:.2s" href="#p-social" data-go="p-social"><span class="ph"><img src="img/pb-cosmofarma.webp" width="900" height="1123" alt="Post Instagram per PB Pharma: Cosmofarma Exhibition 2026" loading="lazy"></span><small>Azienda parafarmaceutica</small><h3>PB Pharma <span class="now">Attuale</span></h3><p>Grafiche per le fiere ed eventi di settore in tutta Italia.</p><span class="more">Leggi il progetto ↗</span></a>
+            <a class="story rv" href="#p-social" data-go="p-social"><span class="ph"><img src="sd-abtest.webp" width="900" height="1123" alt="Post Instagram per SD Solution: A/B test creativi sui social" loading="lazy"></span><small>Agenzia di comunicazione</small><h3>SD Solution</h3><p>Caroselli su AI e digital marketing. Per Houseeng anche logo e brand identity.</p><span class="more">Leggi il progetto ↗</span></a>
+            <a class="story rv" style="--d:.1s" href="#p-social" data-go="p-social"><span class="ph"><img src="rw-robot.webp" width="900" height="1120" alt="Post Instagram per Restworld: robot nella ristorazione" loading="lazy"></span><small>Start up HO.RE.CA.</small><h3>Restworld</h3><p>Rubriche, illustrazioni e post per una start up di comunicazione nella ristorazione.</p><span class="more">Leggi il progetto ↗</span></a>
+            <a class="story rv" style="--d:.2s" href="#p-social" data-go="p-social"><span class="ph"><img src="pb-cosmofarma.webp" width="900" height="1123" alt="Post Instagram per PB Pharma: Cosmofarma Exhibition 2026" loading="lazy"></span><small>Azienda parafarmaceutica</small><h3>PB Pharma <span class="now">Attuale</span></h3><p>Grafiche per le fiere ed eventi di settore in tutta Italia.</p><span class="more">Leggi il progetto ↗</span></a>
           </div>
         </div>
       </section>
@@ -608,7 +608,7 @@ tbody tr.wstart td{border-top:1px solid var(--color-charcoal-ink)}
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   function imgTag(name, alt, extra) {
     var s = SIZE[name];
-    return '<img src="img/' + name + '.webp" width="' + s[0] + '" height="' + s[1] + '" alt="' + esc(alt) + '" loading="lazy" decoding="async"' + (extra || "") + '>';
+    return '<img src="' + name + '.webp" width="' + s[0] + '" height="' + s[1] + '" alt="' + esc(alt) + '" loading="lazy" decoding="async"' + (extra || "") + '>';
   }
 
   /* ---------- case study PB Pharma ---------- */
@@ -733,7 +733,7 @@ tbody tr.wstart td{border-top:1px solid var(--color-charcoal-ink)}
     stair = $("#stair");
     stair.innerHTML = ROWS.map(function (r, k) {
       var sz = SIZE[r.img];
-      return '<a class="row" href="#p-' + r.id + '" data-go="p-' + r.id + '" aria-label="' + esc(r.alt) + '" style="--k:' + k + ";--bg:" + r.bg + ";--stripe:" + r.st + ";--pos:" + r.pos + '"><span class="rin"><span class="wide"><img src="img/' + r.img + '.webp" width="' + sz[0] + '" height="' + sz[1] + '" alt=""></span><span class="sq"><span class="l">' + esc(r.t) + (r.s ? "<small>" + esc(r.s) + "</small>" : "") + "</span></span></span></a>";
+      return '<a class="row" href="#p-' + r.id + '" data-go="p-' + r.id + '" aria-label="' + esc(r.alt) + '" style="--k:' + k + ";--bg:" + r.bg + ";--stripe:" + r.st + ";--pos:" + r.pos + '"><span class="rin"><span class="wide"><img src="' + r.img + '.webp" width="' + sz[0] + '" height="' + sz[1] + '" alt=""></span><span class="sq"><span class="l">' + esc(r.t) + (r.s ? "<small>" + esc(r.s) + "</small>" : "") + "</span></span></span></a>";
     }).join("");
   }
   function rotateStair() {
@@ -763,7 +763,7 @@ tbody tr.wstart td{border-top:1px solid var(--color-charcoal-ink)}
     $("#stack").innerHTML = BENTO.map(function (row, i) {
       return '<div class="srow srow--' + row[0] + '" style="--i:' + i + '">' + row[1].map(function (c, j) {
         var sz = SIZE[c.img];
-        return '<article class="bcard rv" style="--d:' + (j * 0.1) + 's"><div class="btxt"><h3>' + esc(c.t) + "</h3><p>" + esc(c.p) + '</p><button class="btn btn--compact" type="button" data-skill="' + c.cat + '">Vedi i lavori ' + ARROW + '</button></div><div class="shot" style="--pos:' + c.pos + '"><img src="img/' + c.img + '.webp" width="' + sz[0] + '" height="' + sz[1] + '" alt="" loading="lazy"></div></article>';
+        return '<article class="bcard rv" style="--d:' + (j * 0.1) + 's"><div class="btxt"><h3>' + esc(c.t) + "</h3><p>" + esc(c.p) + '</p><button class="btn btn--compact" type="button" data-skill="' + c.cat + '">Vedi i lavori ' + ARROW + '</button></div><div class="shot" style="--pos:' + c.pos + '"><img src="' + c.img + '.webp" width="' + sz[0] + '" height="' + sz[1] + '" alt="" loading="lazy"></div></article>';
       }).join("") + "</div>";
     }).join("");
   }
@@ -774,7 +774,7 @@ tbody tr.wstart td{border-top:1px solid var(--color-charcoal-ink)}
     return list.map(function (n) {
       var g = MQGO[n], sz = SIZE[n], isP = g.indexOf("p-") !== 0;
       var attrs = (isP ? 'href="#work" data-piece="' + g + '"' : 'href="#' + g + '" data-go="' + g + '"') + (dup ? ' aria-hidden="true" tabindex="-1"' : "");
-      return '<a class="mq-t" ' + attrs + '><img src="img/' + n + '.webp" width="' + sz[0] + '" height="' + sz[1] + '" alt="' + (dup ? "" : esc(n.replace(/-/g, " "))) + '" loading="lazy"></a>';
+      return '<a class="mq-t" ' + attrs + '><img src="' + n + '.webp" width="' + sz[0] + '" height="' + sz[1] + '" alt="' + (dup ? "" : esc(n.replace(/-/g, " "))) + '" loading="lazy"></a>';
     }).join("");
   }
   function buildMarquee() {
@@ -783,7 +783,7 @@ tbody tr.wstart td{border-top:1px solid var(--color-charcoal-ink)}
     $("#mq1").innerHTML = '<div class="mq-track">' + mqHtml(l1, false) + mqHtml(l1, true) + "</div>";
     $("#mq2").innerHTML = '<div class="mq-track">' + mqHtml(l2, false) + mqHtml(l2, true) + "</div>";
     var sp = ["skinna-collage", "moseca-collage", "houseeng-collage", "apl-collage", "pb-cover", "ui-lambo-home", "poster-wall", "sd-prompt", "gambit", "parrot", "astronaut", "lebron"];
-    $("#spark-grid").innerHTML = sp.map(function (n) { var z = SIZE[n]; return '<img src="img/' + n + '.webp" width="' + z[0] + '" height="' + z[1] + '" alt="" loading="lazy">'; }).join("");
+    $("#spark-grid").innerHTML = sp.map(function (n) { var z = SIZE[n]; return '<img src="' + n + '.webp" width="' + z[0] + '" height="' + z[1] + '" alt="" loading="lazy">'; }).join("");
   }
 
   /* ---------- header scuro sopra le sezioni nere + ingresso sfocato → nitido ---------- */
@@ -890,7 +890,7 @@ tbody tr.wstart td{border-top:1px solid var(--color-charcoal-ink)}
   var lb = $("#lb"), lbItem = null, lbI = 0, lbOpener = null;
   function paintLb() {
     var im = lbItem.imgs[lbI], s = SIZE[im[0]];
-    var el = $("#lb-img"); el.src = "img/" + im[0] + ".webp"; el.alt = im[1]; el.width = s[0]; el.height = s[1];
+    var el = $("#lb-img"); el.src = "" + im[0] + ".webp"; el.alt = im[1]; el.width = s[0]; el.height = s[1];
     $("#lb-cap").innerHTML = "<b>" + esc(lbItem.title) + "</b>" + esc(lbItem.sub) + (lbItem.imgs.length > 1 ? " · " + (lbI + 1) + " di " + lbItem.imgs.length : "");
     var multi = lbItem.imgs.length > 1;
     $("#lb-prev").hidden = !multi; $("#lb-next").hidden = !multi;
