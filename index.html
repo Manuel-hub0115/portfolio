@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio di Manuel Zagarini: graphic & web designer. Grafiche, siti web e social media.">
+<title>Manuel Zagarini Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: gray gallery wall. Oversized left-aligned statement, overlapping work tiles, dark inset panels as the only contrast. UI stays achromatic; the work supplies the color. */
+:root{
+  --color-studio-canvas:#eeeeee;
+  --color-paper-white:#ffffff;
+  --color-charcoal-ink:#222222;
+  --color-graphite:#333333;
+  --color-soft-ash:#555555;
+  --color-absolute-black:#000000;
+  --load:#dcdcdc;
+  --font-inter:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-inter-tight:'Inter Tight','Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --radius-md:4px;--radius-lg:8px;--radius-xl:12px;
+  --shadow-md:rgba(0,0,0,.1) 0 2px 15px 0;
+  --gap:16px;
+  --section:clamp(60px,8vw,100px);
+  --gutter-x:clamp(16px,3vw,40px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-studio-canvas);color:var(--color-charcoal-ink);font-family:var(--font-inter);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--color-studio-canvas);z-index:30}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+:focus-visible{outline:2px solid var(--color-charcoal-ink);outline-offset:3px;border-radius:var(--radius-md)}
+.dark :focus-visible,.lb :focus-visible{outline-color:var(--color-paper-white)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:16px;top:-60px;background:var(--color-charcoal-ink);color:var(--color-paper-white);padding:10px 16px;border-radius:var(--radius-lg);z-index:50;font-family:var(--font-inter-tight);font-weight:500}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 8px)}
+
+.wrap{max-width:1440px;margin-inline:auto;padding-left:max(var(--gutter-x),env(safe-area-inset-left,0px));padding-right:max(var(--gutter-x),env(safe-area-inset-right,0px))}
+
+/* type */
+.t-hero{font-weight:600;font-size:clamp(42px,5.6vw,80px);line-height:1;letter-spacing:-.04em;text-wrap:balance}
+.t-section{font-weight:700;font-size:clamp(34px,5vw,48px);line-height:1.1;letter-spacing:-.04em;text-wrap:balance}
+.t-editor{font-weight:600;font-size:clamp(38px,6.4vw,64px);line-height:1.04;letter-spacing:-.04em;text-wrap:balance}
+.t-nav{font-family:var(--font-inter-tight);font-weight:500;font-size:15px;line-height:1.4}
+.t-strong{font-weight:700;font-size:16px;line-height:1.4;letter-spacing:-.04em}
+.t-legal{font-size:11px;line-height:1.66;letter-spacing:-.01em;color:var(--color-soft-ash)}
+.muted{color:var(--color-soft-ash)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:12px 24px;border-radius:var(--radius-lg);border:1px solid var(--color-charcoal-ink);background:var(--color-charcoal-ink);color:var(--color-paper-white);font-weight:600;font-size:16px;line-height:1.4;letter-spacing:-.04em;text-decoration:none;cursor:pointer;transition:box-shadow .2s}
+.btn:hover{box-shadow:var(--shadow-md)}
+.btn--compact{border-radius:var(--radius-md);padding:12px 20px 12px 24px}
+.btn--inverse{background:var(--color-paper-white);color:var(--color-graphite);border-color:var(--color-charcoal-ink)}
+.btn svg{width:16px;height:16px;flex:none}
+
+/* header: barra di vetro a tutta larghezza, i contenuti scorrono sotto */
+.top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:30;pointer-events:none}
+.top .bar{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--gap);margin:8px max(8px,env(safe-area-inset-right,0px)) 0 max(8px,env(safe-area-inset-left,0px));padding:5px 5px 5px 16px;border-radius:var(--radius-lg);background:rgba(238,238,238,.55);-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);transition:background .35s,color .35s}
+.mark{font-weight:700;font-size:17px;letter-spacing:-.04em;text-decoration:none;line-height:1.1;display:flex;flex-direction:column;border-radius:var(--radius-md);padding:2px 0}
+.mark small{font-family:var(--font-inter-tight);font-weight:500;font-size:12px;letter-spacing:0;color:var(--color-soft-ash);transition:color .35s}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a.t-nav{text-decoration:none;padding:4px 8px;border-radius:var(--radius-md)}
+.nav a.t-nav:hover{text-decoration:underline;text-underline-offset:4px}
+.nav .btn{min-height:40px;padding:8px 20px;margin-left:8px;transition:background .35s,color .35s,border-color .35s}
+.top.dk .bar{background:rgba(0,0,0,.34);color:var(--color-paper-white)}
+.top.dk .mark small{color:#cfcfcf}
+.top.dk .nav .btn{background:var(--color-paper-white);color:var(--color-charcoal-ink);border-color:var(--color-paper-white)}
+.top.dk :focus-visible{outline-color:var(--color-paper-white)}
+@media (max-width:720px){.nav a.t-nav{display:none}.nav .btn{margin-left:0}}
+#view-detail{padding-top:76px}
+
+/* hero: scala diagonale in movimento continuo. Ogni riga = screenshot largo (2u) + quadrato colorato (1u). */
+.hero{--u:max(min(21.1svh,13.7vw),92px);position:sticky;top:0;z-index:0}
+.hero-in{position:relative;height:calc(var(--u)*4.73);overflow:hidden}
+.hero-h{position:absolute;z-index:3;left:max(var(--gutter-x),env(safe-area-inset-left,0px));top:calc(var(--u)*.56);font-size:clamp(40px,calc(var(--u)*.39),84px);line-height:1;pointer-events:none}
+.stair{--ox:2vw;--oy:-.3;--s:0;position:absolute;inset:0}
+.row{position:absolute;z-index:1;width:calc(var(--u)*3);height:var(--u);right:calc(var(--ox) + var(--k)*var(--u));top:calc((var(--k) + var(--oy))*var(--u));transform:translate(calc(var(--s)*var(--u)),calc(var(--s)*var(--u)*-1));text-decoration:none;color:inherit;will-change:transform}
+.rin{display:grid;grid-template-columns:2fr 1fr;width:100%;height:100%;animation:rowIn 1.1s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--k)*120ms + 80ms)}
+.row .wide{display:block;overflow:hidden;background:var(--load);border-radius:var(--radius-md) 0 0 var(--radius-md)}
+.row .wide img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.row:hover .wide img{transform:scale(1.05)}
+.row .sq{position:relative;overflow:hidden;background:var(--bg);color:var(--ink,#fff);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:calc(var(--u)*.09);font-family:var(--font-inter-tight);font-weight:500;font-size:clamp(10px,calc(var(--u)*.07),14px);line-height:1.3}
+.row .sq span.l{position:relative;z-index:1;display:block;max-width:68%}
+.row .sq small{display:block;font-size:inherit;opacity:.85}
+.row .sq::after{content:"";position:absolute;left:-20%;top:46%;width:140%;height:20%;background:var(--stripe);transform:rotate(-45deg);transform-origin:center;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.row:hover .sq::after{transform:rotate(-45deg) translateY(-6%)}
+.row:focus-visible{outline-offset:-3px}
+@keyframes rowIn{from{opacity:0;transform:translate(calc(var(--u)*.8),calc(var(--u)*-.45))}to{opacity:1;transform:none}}
+.hero-note{position:absolute;z-index:3;right:max(2vw,env(safe-area-inset-right,0px));bottom:calc(var(--u)*.7);width:calc(var(--u)*1.95);display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.hero-note p{font-size:clamp(14px,1.05vw,17px);line-height:1.45;letter-spacing:-.01em}
+@media (max-width:700px){
+  .hero{--u:34vw;position:relative}
+  .hero-in{height:auto;padding-top:92px;overflow:visible}
+  .hero-h{position:static;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));font-size:clamp(40px,13vw,60px)}
+  .stair{--ox:-6vw;--oy:0;position:relative;inset:auto;height:calc(var(--u)*3.05);margin-top:28px;overflow:hidden}
+  .hero-note{position:static;width:auto;max-width:440px;padding:24px max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
+  .hero-note p{font-size:16px}
+}
+
+/* sezione scura: sale sopra la hero, schede bianche che si sovrappongono */
+.feat{position:relative;z-index:3;border-radius:12px 12px 0 0;color:var(--color-paper-white);background:linear-gradient(180deg,#000 0%,#171717 38%,#6f6f6f 74%,var(--color-studio-canvas) 100%);padding-block:clamp(64px,9vw,120px) var(--section)}
+.feat h2{font-weight:600;font-size:clamp(40px,6vw,64px);line-height:1.04;letter-spacing:-.04em;text-wrap:balance;margin-bottom:clamp(40px,6vw,96px)}
+.stack{display:grid;gap:16px}
+.srow{position:sticky;top:calc(84px + var(--i)*14px);z-index:calc(var(--i) + 1);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.srow--full{grid-template-columns:minmax(0,1fr)}
+.bcard{background:var(--color-paper-white);color:var(--color-charcoal-ink);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;min-height:420px}
+.btxt{padding:clamp(24px,3.2vw,40px);display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btxt h3{font-weight:700;font-size:clamp(26px,3vw,38px);line-height:1.04;letter-spacing:-.04em;text-wrap:balance}
+.btxt p{max-width:36ch;font-size:16px;line-height:1.5;color:var(--color-graphite)}
+.btxt .btn{margin-top:8px}
+.shot{flex:1;min-height:200px;margin:8px clamp(24px,3.2vw,40px) 0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;overflow:hidden;background:var(--load)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 0%);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.bcard:hover .shot img{transform:scale(1.04)}
+.srow--full .bcard{flex-direction:row;min-height:360px}
+.srow--full .btxt{flex:5 1 0;justify-content:center}
+.srow--full .shot{flex:6 1 0;margin:32px 0 0 0;border-radius:var(--radius-lg) 0 0 0}
+@media (max-width:860px){
+  .srow{position:static;grid-template-columns:minmax(0,1fr)}
+  .srow--full .bcard{flex-direction:column}
+  .srow--full .shot{margin:8px clamp(24px,3.2vw,40px) 0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;min-height:240px}
+}
+.after{position:relative;z-index:2;background:var(--color-studio-canvas)}
+
+/* fasce che scorrono */
+.mq-sec{padding-top:clamp(40px,6vw,80px);display:grid;gap:clamp(20px,3vw,40px);overflow:hidden}
+.mq{--mqh:clamp(140px,17vw,240px);overflow:hidden}
+.mq-track{display:flex;gap:16px;width:max-content;animation:mq 70s linear infinite}
+.mq--r .mq-track{animation-direction:reverse}
+.mq:hover .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(calc(-50% - 8px))}}
+.mq-t{flex:none;height:var(--mqh);aspect-ratio:1.6;border-radius:var(--radius-md);overflow:hidden;background:var(--load);display:block}
+.mq-t:nth-child(even){border-radius:var(--radius-lg)}
+.mq-t img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.mq-t:hover img{transform:scale(1.05)}
+
+/* ingresso sfocato → nitido */
+.rv{transition:opacity 1s cubic-bezier(.2,.7,.2,1) var(--d,0s),filter 1s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform 1s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.rv-on .rv:not(.in){opacity:0;filter:blur(14px);transform:translateY(28px)}
+
+/* work */
+.sec{padding-top:var(--section);scroll-margin-top:72px}
+.work-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px}
+.work-head p{max-width:46ch;margin-top:12px}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:var(--radius-md);border:1px solid var(--color-charcoal-ink);background:transparent;cursor:pointer;font-family:var(--font-inter-tight);font-weight:500;font-size:15px;line-height:1.4}
+.chip span{font-variant-numeric:tabular-nums;color:var(--color-soft-ash)}
+.chip:hover{background:var(--color-paper-white)}
+.chip[aria-pressed="true"]{background:var(--color-charcoal-ink);color:var(--color-paper-white)}
+.chip[aria-pressed="true"] span{color:#cfcfcf}
+.grid{columns:3;column-gap:20px}
+@media (max-width:1000px){.grid{columns:2}}
+@media (max-width:480px){.grid{columns:1}}
+.item{break-inside:avoid;margin-bottom:32px}
+.item[hidden]{display:none}
+.card{display:block;width:100%;padding:0;border:0;background:none;text-align:left;text-decoration:none;cursor:pointer;color:inherit}
+.card .ph{display:block;overflow:hidden;border-radius:var(--radius-md);background:var(--load)}
+.item:nth-child(3n+2) .card .ph{border-radius:var(--radius-lg)}
+.card img{width:100%;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover img{transform:scale(1.03)}
+.cap{display:flex;flex-direction:column;gap:2px;padding-top:12px}
+.cap strong{font-weight:700;font-size:16px;line-height:1.3;letter-spacing:-.04em}
+.cap em{font-style:normal;font-family:var(--font-inter-tight);font-weight:500;font-size:15px;color:var(--color-soft-ash)}
+.card:hover .cap strong{text-decoration:underline;text-underline-offset:3px}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:48px}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr;gap:28px}}
+.about-text{display:flex;flex-direction:column;gap:20px;max-width:62ch;font-size:19px;line-height:1.5;letter-spacing:-.01em}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 24px;margin-top:20px;max-width:62ch}
+@media (max-width:520px){.facts{grid-template-columns:1fr}}
+.facts dt{font-family:var(--font-inter-tight);font-weight:700;font-size:15px;margin-bottom:6px}
+.facts dd{font-size:16px;line-height:1.5;color:var(--color-graphite)}
+.facts dd+dd{margin-top:2px}
+
+/* footer */
+.foot{padding-block:var(--section) 40px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px 16px}
+@media (max-width:720px){.foot-grid{grid-template-columns:1fr 1fr}.foot-grid>:first-child{grid-column:1/-1}}
+.foot h3{font-family:var(--font-inter-tight);font-weight:700;font-size:15px;margin-bottom:10px}
+.foot li{margin-bottom:4px}
+.foot a,.foot button.lnk{all:unset;cursor:pointer;font-family:var(--font-inter-tight);font-weight:500;font-size:15px;line-height:1.4;text-decoration:none;border-radius:var(--radius-md)}
+.foot a:hover,.foot button.lnk:hover{text-decoration:underline;text-underline-offset:4px}
+.foot a:focus-visible,.foot button.lnk:focus-visible{outline:2px solid var(--color-charcoal-ink);outline-offset:3px}
+.foot .t-legal{margin-top:48px;max-width:80ch}
+.foot .big{font-weight:700;font-size:clamp(26px,4vw,40px);line-height:1.05;letter-spacing:-.04em;max-width:11ch}
+
+/* detail */
+.detail{padding-block:20px var(--section)}
+.back{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-family:var(--font-inter-tight);font-weight:500;font-size:15px;text-decoration:none;border:0;background:none;cursor:pointer;padding:0;border-radius:var(--radius-md)}
+.back:hover{text-decoration:underline;text-underline-offset:4px}
+.detail h1{margin-top:20px;outline:none}
+.detail-head{display:grid;grid-template-columns:7fr 5fr;gap:48px;margin-block:36px 48px;align-items:start}
+@media (max-width:860px){.detail-head{grid-template-columns:1fr;gap:28px}}
+.lead{font-size:19px;line-height:1.5;letter-spacing:-.01em;max-width:58ch}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;font-size:15px;border-top:1px solid var(--color-charcoal-ink);padding-top:16px}
+.meta dt{font-family:var(--font-inter-tight);font-weight:700}
+.meta dd{color:var(--color-graphite)}
+.gallery{display:flex;gap:16px;align-items:flex-start}
+.gallery figure{flex:var(--fl,1) 1 0;min-width:0}
+.gallery img{width:100%;border-radius:var(--radius-md);background:var(--load)}
+.gallery figure:nth-child(even) img{border-radius:var(--radius-lg)}
+.gallery--stack{flex-direction:column;align-items:stretch}
+.gallery--stack figure{flex:none;width:min(100%,var(--maxw,100%))}
+@media (max-width:760px){
+  .gallery--pair{flex-direction:column;align-items:stretch}
+  .gallery--pair figure{flex:none}
+  .gallery--row{display:grid;grid-template-columns:1fr 1fr}
+}
+.client{padding-top:var(--section)}
+.client-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px 48px;align-items:end;margin-bottom:32px}
+.client-head h2{font-weight:700;font-size:clamp(30px,4.4vw,48px);line-height:1.1;letter-spacing:-.04em;text-wrap:balance}
+.client-head>p{font-size:17px;line-height:1.5;color:var(--color-graphite);max-width:60ch}
+@media (max-width:860px){.client-head{grid-template-columns:minmax(0,1fr)}}
+.table-wrap{margin-top:var(--section);overflow-x:auto;border-radius:var(--radius-lg);background:var(--color-paper-white)}
+.table-wrap h2{padding:28px 24px 8px}
+.table-wrap p.sub{padding:0 24px 20px;color:var(--color-soft-ash)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
+th{background:var(--color-charcoal-ink);color:var(--color-paper-white);text-align:left;font-family:var(--font-inter-tight);font-weight:700;padding:12px 24px}
+td{padding:12px 24px;border-top:1px solid #dcdcdc;vertical-align:top}
+td.wk{font-weight:700;border-right:1px solid #dcdcdc;white-space:nowrap}
+tbody tr.wstart td{border-top:1px solid var(--color-charcoal-ink)}
+.next{display:grid;grid-template-columns:1fr 1fr;margin-top:var(--section);background:var(--color-absolute-black);color:var(--color-paper-white);border-radius:var(--radius-lg);overflow:hidden;text-decoration:none}
+.next .nimg{aspect-ratio:4/3;overflow:hidden}
+.next img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.next:hover img{transform:scale(1.04)}
+.next .ntxt{display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:clamp(20px,3vw,40px)}
+.next .ntxt span{font-family:var(--font-inter-tight);font-weight:500;font-size:15px;color:#cfcfcf}
+.next .ntxt strong{font-weight:600;font-size:clamp(28px,4vw,48px);line-height:1.05;letter-spacing:-.04em}
+@media (max-width:640px){.next{grid-template-columns:1fr}}
+
+/* lightbox */
+.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:var(--color-paper-white);overflow:hidden}
+.lb::backdrop{background:rgba(0,0,0,.9)}
+.lb-in{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:calc(56px + env(safe-area-inset-top,0px)) max(56px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(56px,env(safe-area-inset-left,0px))}
+.lb-img{max-width:100%;max-height:calc(100vh - 170px);width:auto;height:auto;border-radius:var(--radius-md);object-fit:contain}
+.lb-cap{font-family:var(--font-inter-tight);font-weight:500;font-size:15px;text-align:center;max-width:60ch}
+.lb-cap b{display:block;font-family:var(--font-inter);font-weight:700;letter-spacing:-.04em;font-size:17px}
+.lb-btn{position:absolute;display:grid;place-items:center;width:44px;height:44px;border-radius:var(--radius-lg);border:1px solid var(--color-paper-white);background:var(--color-paper-white);color:var(--color-charcoal-ink);cursor:pointer}
+.lb-btn svg{width:18px;height:18px}
+.lb-close{top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px))}
+.lb-prev{left:max(8px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb-next{right:max(8px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+@media (max-width:600px){.lb-in{padding-inline:12px}.lb-prev,.lb-next{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:none}.lb-img{max-height:calc(100vh - 220px)}}
+
+/* ===== Case study PB Pharma (colori del cliente solo dentro i frame) ===== */
+.pb{--pb-ink:#0b2a4a;--pb-slate:#3d4b5c;--pb-mist:#f4f7fb;--pb-line:#cfd9e6;--pb-blue:#0057a8;--pb-blue-d:#00448a;--pb-white:#fff;
+  --pb-head:'Montserrat',ui-sans-serif,system-ui,sans-serif;--pb-body:'Montserrat',ui-sans-serif,system-ui,sans-serif}
+.pb-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.pb-tabs .chip[aria-selected="true"]{background:var(--color-charcoal-ink);color:var(--color-paper-white)}
+.pb-scroll{overflow-x:auto;border-radius:var(--radius-lg)}
+.pb-label{font-family:var(--font-inter-tight);font-weight:500;font-size:13px;color:var(--color-soft-ash);margin:0 0 8px}
+.pb-shot{margin:0;border:1px solid var(--color-charcoal-ink);border-radius:var(--radius-lg);overflow:hidden;background:#fff}
+.pb-shot img{display:block;width:100%;height:auto}
+.pb-shot--form{border:0;background:var(--color-paper-white);padding:clamp(16px,4vw,48px);display:grid;place-items:center}
+.pb-shot--form img{width:100%;max-width:724px;border-radius:var(--radius-md);box-shadow:rgba(0,0,0,.1) 0 2px 15px 0}
+.pb-note{font-size:15px;color:var(--color-graphite);margin-top:14px;max-width:70ch}
+/* sezioni case study */
+.cs{display:grid;gap:0;grid-template-columns:minmax(0,1fr)}
+.cs>*{min-width:0}
+.cs-sec{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px 48px;padding-top:var(--section)}
+@media (max-width:860px){.cs-sec{grid-template-columns:minmax(0,1fr)}}
+.cs-sec>header .eyebrow{margin:0 0 12px}
+.cs-sec h2{font-weight:700;font-size:clamp(30px,4.4vw,48px);line-height:1.1;letter-spacing:-.04em;text-wrap:balance}
+.cs-body{display:flex;flex-direction:column;gap:20px;min-width:0}
+.cs-body p{max-width:62ch;font-size:17px}
+.cs-list{display:grid;gap:10px;max-width:62ch}
+.cs-list li{padding-left:20px;position:relative}
+.cs-list li::before{content:"";position:absolute;left:0;top:.68em;width:8px;height:2px;background:var(--color-charcoal-ink)}
+.cs-full{grid-column:1/-1;min-width:0}
+.chips-s{display:flex;flex-wrap:wrap;gap:8px}
+.chips-s span{font-family:var(--font-inter-tight);font-weight:500;font-size:15px;padding:8px 14px;border:1px solid var(--color-charcoal-ink);border-radius:var(--radius-md)}
+.ia{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:700px){.ia{grid-template-columns:1fr}}
+.ia h3{font-family:var(--font-inter-tight);font-weight:700;font-size:15px;margin-bottom:10px}
+.ia ol{display:grid;gap:8px;counter-reset:s}
+.ia ol li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px;background:var(--color-paper-white);border-radius:var(--radius-lg);padding:12px 14px;font-size:15px}
+.ia ol li::before{content:counter(s);font-family:var(--font-inter-tight);font-weight:700}
+.ia ol li b{display:block}
+.ia .menu{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start}
+.ia .menu span{background:var(--color-charcoal-ink);color:var(--color-paper-white);font-family:var(--font-inter-tight);font-weight:500;font-size:15px;padding:9px 14px;border-radius:var(--radius-md)}
+.ia .menu span.on{background:var(--color-paper-white);color:var(--color-charcoal-ink);box-shadow:inset 0 0 0 1px var(--color-charcoal-ink)}
+.ia .menu small{display:block;width:100%;font-size:14px;color:var(--color-soft-ash)}
+.tok{display:grid;gap:20px}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.sw div{border-radius:var(--radius-lg);overflow:hidden;background:var(--color-paper-white);font-size:13px}
+.sw i{display:block;height:58px;background:var(--c)}
+.sw span{display:block;padding:8px 10px;line-height:1.3}
+.sw b{display:block;font-family:var(--font-inter-tight);font-weight:700;font-size:13px}
+.type-s{background:var(--color-paper-white);border-radius:var(--radius-lg);padding:24px;display:grid;gap:16px;font-family:var(--pb-head)}
+.type-s .tr{display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:baseline;border-top:1px solid #e3e3e3;padding-top:14px}
+.type-s .tr:first-child{border-top:0;padding-top:0}
+.type-s small{font-family:var(--font-inter-tight);font-size:13px;color:var(--color-soft-ash)}
+@media (max-width:560px){.type-s .tr{grid-template-columns:1fr;gap:4px}}
+.sp{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;background:var(--color-paper-white);border-radius:var(--radius-lg);padding:20px}
+.sp div{display:grid;gap:6px;justify-items:center;font-size:12px;font-family:var(--font-inter-tight)}
+.sp i{display:block;background:var(--pb-blue);border-radius:2px}
+.sp .r{width:56px;height:56px;background:var(--pb-mist);border:1px solid var(--pb-line)}
+.sp .sh{width:72px;height:56px;background:#fff;border-radius:12px;box-shadow:0 14px 30px rgba(18,32,46,.14)}
+.btn-states{display:flex;flex-wrap:wrap;gap:16px;background:var(--color-paper-white);border-radius:var(--radius-lg);padding:20px;align-items:flex-end}
+.btn-states div{display:grid;gap:8px;font-family:var(--font-inter-tight);font-size:13px;color:var(--color-soft-ash)}
+.bs{font:600 16px var(--pb-head);padding:13px 26px;border-radius:999px;border:1px solid var(--pb-blue);background:var(--pb-blue);color:#fff;cursor:default}
+.bs.h{background:var(--pb-blue-d);border-color:var(--pb-blue-d);box-shadow:0 8px 20px rgba(15,76,129,.28);transform:translateY(-2px)}
+.bs.f{outline:3px solid var(--pb-ink);outline-offset:3px}
+.bs.d{background:#dfe5ea;border-color:#dfe5ea;color:#7a8794}
+.bs.g{background:#fff;color:var(--pb-ink);border-color:#7a8ca3}
+.tbl{overflow-x:auto;border-radius:var(--radius-lg);background:var(--color-paper-white)}
+.tbl table{min-width:640px}
+.tbl th{white-space:nowrap}
+.tbl td{font-size:15px}
+.tbl td:first-child{font-weight:700;white-space:nowrap}
+.tbl code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;background:#eee;padding:1px 5px;border-radius:4px}
+.cs-sec .btn{width:fit-content}
+
+/* storie */
+.stories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3.4vw,56px);max-width:1180px;margin-inline:auto}
+@media (max-width:820px){.stories{grid-template-columns:minmax(0,1fr);max-width:440px}}
+.story{display:block;text-decoration:none;color:inherit}
+.story .ph{display:block;overflow:hidden;border-radius:var(--radius-md);background:var(--load)}
+.story img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.story:hover img{transform:scale(1.04)}
+.story small{display:block;margin-top:16px;font-family:var(--font-inter-tight);font-weight:500;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--color-soft-ash)}
+.story h3{font-weight:600;font-size:clamp(26px,3vw,34px);line-height:1.05;letter-spacing:-.04em;margin-top:4px}
+.story h3 .now{position:relative;top:-3px}
+.now{display:inline-block;vertical-align:middle;margin-left:8px;padding:3px 8px;border-radius:var(--radius-sm,4px);background:var(--color-charcoal-ink);color:var(--color-paper-white);font-family:var(--font-inter-tight);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;line-height:1.2}
+.story p{margin:10px 0 18px;max-width:36ch;color:var(--color-graphite);line-height:1.5}
+.story .more{font-weight:700;font-size:14px;letter-spacing:-.02em}
+.story:hover .more{text-decoration:underline;text-underline-offset:4px}
+
+/* blocco finale: griglia inclinata */
+.spark{position:relative;overflow:hidden;border-radius:var(--radius-lg);background:var(--color-absolute-black);color:var(--color-paper-white);min-height:clamp(460px,50vw,600px);display:flex;align-items:center;padding:clamp(28px,5vw,72px)}
+.spark-bg{position:absolute;inset:0;overflow:hidden}
+.spark-grid{position:absolute;left:26%;top:-45%;width:105%;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;transform:rotate(36deg);transform-origin:center;filter:brightness(.62);animation:drift 40s linear infinite alternate}
+.spark-grid img{width:100%;aspect-ratio:1.5;object-fit:cover;border-radius:var(--radius-md)}
+@keyframes drift{from{translate:0 0}to{translate:-4% 4%}}
+.spark-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#000 14%,rgba(0,0,0,.78) 44%,rgba(0,0,0,0) 82%)}
+@media (max-width:700px){.spark-bg::after{background:linear-gradient(180deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.7) 100%)}.spark-grid{left:0;top:-20%;width:150%}}
+.spark-in{position:relative;z-index:1;max-width:560px;display:grid;gap:20px}
+.spark h2{font-weight:600;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-.04em;text-wrap:balance}
+.spark .mail{font-weight:600;font-size:clamp(22px,3.4vw,38px);line-height:1.1;letter-spacing:-.04em;overflow-wrap:anywhere;user-select:all}
+.contact-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.spark .tel{font-family:var(--font-inter-tight);font-weight:500;font-size:18px}
+.spark .mailto{color:#f7f7f7;font-family:var(--font-inter-tight);font-weight:500;font-size:15px;text-underline-offset:4px}
+.spark :focus-visible{outline-color:var(--color-paper-white)}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.hero{position:relative}}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Vai al contenuto</a>
+
+<header class="top">
+  <div class="bar">
+    <a class="mark" href="#home" data-go="home" aria-label="Manuel Zagarini, vai alla home">Manuel Zagarini<small>Graphic &amp; Web Designer</small></a>
+    <nav class="nav" aria-label="Principale">
+      <a class="t-nav" href="#work" data-go="work">Lavori</a>
+      <a class="t-nav" href="#skills" data-go="skills">Competenze</a>
+      <a class="t-nav" href="#about" data-go="about">Chi sono</a>
+      <a class="btn" href="#contact" data-go="contact">Scrivimi</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HOME -->
+  <div id="view-home">
+    <section class="hero" aria-labelledby="h-hero">
+      <div class="hero-in">
+        <h1 class="t-hero hero-h" id="h-hero">Brand, poster,<br>Websites<br>e social.</h1>
+        <div class="stair" id="stair" aria-label="Progetti in evidenza"></div>
+        <div class="hero-note">
+          <p>Sono Manuel, graphic e web designer. Brand identity, grafiche, interfacce, social e poster, dal brief alla pubblicazione.</p>
+          <a class="btn btn--compact" href="#work" data-go="work">Guarda i lavori <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5m0 0H5.5M11 5v5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="feat" id="skills" aria-labelledby="h-skills" data-dark data-dark-ratio=".6">
+      <div class="wrap">
+        <h2 id="h-skills" class="rv">Cosa posso fare per te</h2>
+        <div class="stack" id="stack"></div>
+      </div>
+    </section>
+
+    <div class="after">
+      <section class="mq-sec" aria-label="Lavori scelti">
+        <div class="mq" id="mq1"></div>
+        <div class="mq mq--r" id="mq2"></div>
+      </section>
+
+      <section class="sec" id="work" aria-labelledby="h-work">
+        <div class="wrap">
+          <div class="work-head rv">
+            <div>
+              <h2 class="t-section" id="h-work">Lavori</h2>
+              <p class="muted" id="work-count"></p>
+            </div>
+            <div class="filters" role="group" aria-label="Filtra per categoria" id="filters"></div>
+          </div>
+          <ul class="grid" id="grid"></ul>
+        </div>
+      </section>
+
+      <section class="sec" id="stories" aria-labelledby="h-stories">
+        <div class="wrap">
+          <h2 class="t-section rv" id="h-stories" style="margin-bottom:clamp(32px,5vw,64px);text-align:center">Con chi ho lavorato</h2>
+          <div class="stories">
+            <a class="story rv" href="#p-social" data-go="p-social"><span class="ph"><img src="img/sd-abtest.webp" width="900" height="1123" alt="Post Instagram per SD Solution: A/B test creativi sui social" loading="lazy"></span><small>Agenzia di comunicazione</small><h3>SD Solution</h3><p>Caroselli su AI e digital marketing. Per Houseeng anche logo e brand identity.</p><span class="more">Leggi il progetto ↗</span></a>
+            <a class="story rv" style="--d:.1s" href="#p-social" data-go="p-social"><span class="ph"><img src="img/rw-robot.webp" width="900" height="1120" alt="Post Instagram per Restworld: robot nella ristorazione" loading="lazy"></span><small>Start up HO.RE.CA.</small><h3>Restworld</h3><p>Rubriche, illustrazioni e post per una start up di comunicazione nella ristorazione.</p><span class="more">Leggi il progetto ↗</span></a>
+            <a class="story rv" style="--d:.2s" href="#p-social" data-go="p-social"><span class="ph"><img src="img/pb-cosmofarma.webp" width="900" height="1123" alt="Post Instagram per PB Pharma: Cosmofarma Exhibition 2026" loading="lazy"></span><small>Azienda parafarmaceutica</small><h3>PB Pharma <span class="now">Attuale</span></h3><p>Grafiche per le fiere ed eventi di settore in tutta Italia.</p><span class="more">Leggi il progetto ↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="about" aria-labelledby="h-about">
+        <div class="wrap about-grid">
+          <h2 class="t-section rv" id="h-about">Chi sono</h2>
+          <div class="rv" style="--d:.1s">
+            <div class="about-text">
+              <p>Sono Manuel, graphic designer e web designer. Lavoro su identità visive, poster, interfacce per web e contenuti per i social, seguendo il progetto dal brief alla pubblicazione.</p>
+              <p>Ho progettato brand e app insieme a ITS Piemonte e curato la comunicazione social di SD Solution, agenzia di comunicazione, e di Restworld, start up nel settore HO.RE.CA. Attualmente lavoro in PB Pharma, azienda parafarmaceutica, dove curo la comunicazione social e le grafiche per fiere ed eventi di settore, e ho realizzato e curato l'intero sito aziendale.</p>
+            </div>
+            <dl class="facts">
+              <div><dt>Esperienze</dt><dd>SD Solution</dd><dd>Restworld</dd><dd>PB Pharma <span class="now">Attuale</span></dd></div>
+              <div><dt>Formazione</dt><dd>ITS Piemonte, Corso Digital Strategist</dd><dd>Forte Chance ETS, technical development and management of websites</dd></div>
+              <div><dt>Strumenti</dt><dd>Figma</dd><dd>Adobe XD</dd><dd>Adobe InDesign</dd><dd>Adobe Photoshop</dd><dd>Adobe Illustrator</dd><dd>Blender</dd><dd>WordPress</dd><dd>Canva</dd></div>
+              <div><dt>Ambiti</dt><dd>Brand identity</dd><dd>Illustrazione e grafica</dd><dd>UI/UX design</dd><dd>Social media</dd><dd>Poster</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="contact" aria-labelledby="h-contact">
+        <div class="wrap">
+          <div class="spark rv" data-dark>
+            <div class="spark-bg" aria-hidden="true"><div class="spark-grid" id="spark-grid"></div></div>
+            <div class="spark-in">
+              <h2 id="h-contact">Hai un progetto in mente?</h2>
+              <p class="mail" id="mail">manuelzagarini@gmail.com</p>
+              <div class="contact-row">
+                <button class="btn btn--inverse" type="button" id="copy-mail">Copia email</button>
+                <span class="tel" id="tel">(+39) 348 418 2959</span>
+                <a class="mailto" href="mailto:manuelzagarini@gmail.com">Apri nel programma di posta</a>
+                <span class="sr" role="status" id="copy-status"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- DETAIL -->
+  <div id="view-detail" hidden>
+    <div class="wrap" id="detail-mount"></div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><p class="big">Manuel Zagarini</p></div>
+      <div>
+        <h3>Lavori</h3>
+        <ul id="foot-cats"></ul>
+      </div>
+      <div>
+        <h3>Info</h3>
+        <ul>
+          <li><a href="#about" data-go="about">Chi sono</a></li>
+          <li><a href="#skills" data-go="skills">Competenze</a></li>
+          <li><a href="#contact" data-go="contact">Contatti</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contatti</h3>
+        <ul>
+          <li><span class="t-nav">manuelzagarini@gmail.com</span></li>
+          <li><span class="t-nav">(+39) 348 418 2959</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="t-legal">© 2026 Manuel Zagarini. I progetti restano di proprietà di autore e clienti. Alcuni lavori sono esercizi personali di stile e non rappresentano i marchi citati.</p>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Anteprima del lavoro">
+  <div class="lb-in">
+    <img class="lb-img" id="lb-img" alt="">
+    <p class="lb-cap" id="lb-cap"></p>
+    <button class="lb-btn lb-close" type="button" id="lb-close" aria-label="Chiudi"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 3l12 12M15 3 3 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <button class="lb-btn lb-prev" type="button" id="lb-prev" aria-label="Immagine precedente"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 3 5 9l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="lb-btn lb-next" type="button" id="lb-next" aria-label="Immagine successiva"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="m7 3 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  "use strict";
+  var CATS = [
+    { id: "logo", name: "Logo design", items: ["Brand identity", "Logotipo e simbolo", "Palette e tipografia", "Mockup e applicazioni"] },
+    { id: "grafiche", name: "Grafiche", items: ["Illustrazione vettoriale", "Low poly", "Ritratto digitale", "Modellazione 3D"] },
+    { id: "ux", name: "UI/UX design", items: ["Interfacce web", "App e dashboard", "Prototipi in Figma e Adobe XD"] },
+    { id: "social", name: "Social media", items: ["Piano editoriale", "Grafica ed editing", "Pubblicazione su Instagram"] },
+    { id: "poster", name: "Poster", items: ["Poster per mostre ed eventi", "Impaginazione in Adobe InDesign"] }
+  ];
+  var catName = {}; CATS.forEach(function (c) { catName[c.id] = c.name; });
+
+  var SIZE = {
+    "apl-collage": [684, 788], "apl-panel": [372, 714], "astronaut": [961, 944],
+    "bauhaus-details": [555, 1000], "bauhaus-organisation": [685, 976],
+    "drink-teal": [703, 939], "drink-teal-b": [691, 910], "drink-white": [1121, 973],
+    "fox": [1185, 906], "gambit": [1170, 1256],
+    "houseeng-collage": [1400, 1510], "houseeng-panel": [780, 1456], "lebron": [1283, 1278],
+    "moseca-collage": [690, 790], "moseca-panel": [332, 746], "parrot": [1215, 1845],
+    "poster-wall": [1036, 694], "skinna-collage": [690, 797], "skinna-panel": [384, 712],
+    "sneaker": [1400, 1098], "pb-home": [1400, 2777], "pb-cat": [1400, 2905], "pb-footer": [1255, 432], "pb-form": [724, 654], "sd-abtest": [900, 1123], "sd-abtest-slide": [680, 848], "sd-prompt": [900, 1115], "sd-prompt-slide": [675, 850], "rw-robot": [900, 1120], "rw-dalmasso": [846, 850], "rw-tfr": [900, 1117], "rw-caccia": [678, 854], "rw-mlk": [680, 847], "pb-cosmofarma": [900, 1123], "pb-fiera": [760, 1348],
+    "strange-things": [1033, 1221],
+    "ui-lambo-home": [612, 344], "ui-lambo-interior": [611, 342], "ui-music-app": [476, 267], "pb-cover": [1200, 936]
+  };
+
+  var PLAN = [
+    ["Settimana 1", [["Lunedì", "Carosello", "Novità tech della settimana"], ["Mercoledì", "Post singolo", "Campagna di un grande brand: cosa ha funzionato"], ["Venerdì", "Carosello", "Aggiornamenti dei social: cosa cambia"]]],
+    ["Settimana 2", [["Lunedì", "Carosello", "Prompt design: farsi capire dall'AI"], ["Mercoledì", "Reel", "Trend di marketing del momento"], ["Venerdì", "Carosello", "A/B test creativi sui social"]]],
+    ["Settimana 3", [["Lunedì", "Carosello", "Novità tech della settimana"], ["Mercoledì", "Post singolo", "Anatomia di una campagna di un grande brand"], ["Venerdì", "Carosello", "Aggiornamenti degli algoritmi social"]]],
+    ["Settimana 4", [["Lunedì", "Carosello", "Strumenti AI per creativi"], ["Mercoledì", "Reel", "Dietro le quinte della redazione"], ["Venerdì", "Carosello", "Recap del mese: le notizie da non perdere"]]]
+  ];
+
+  /* type "project" opens a page; type "piece" opens the lightbox */
+  var ITEMS = [
+    { id: "houseeng", type: "project", cat: "logo", title: "Houseeng", sub: "Brand identity · Immobiliare", cover: "houseeng-collage",
+      lead: "Progettazione del logo e della brand identity per un brand del settore immobiliare, nata dal brief e dal piano editoriale per i Property Manager. La casa è il simbolo di sicurezza, la serenità è il valore del brand.",
+      meta: [["Contesto", "SD Solution"], ["Ruolo", "Logo, brand identity, piano editoriale"], ["Font", "Nunito"], ["Applicazioni", "Biglietti da visita, post Instagram"]],
+      gallery: "pair", imgs: [["houseeng-collage", "Houseeng: logo, biglietti da visita e post Instagram su carta strappata"], ["houseeng-panel", "Houseeng: logo su fondo blu, font Nunito e prove colore del simbolo"]] },
+    { id: "pb-pharma", type: "project", cat: "ux", title: "Sito PB Pharma", sub: "UI/UX · Figma e WordPress", cover: "pb-cover", custom: "pb",
+      lead: "Studio e progettazione del sito aziendale di PB Pharma, azienda torinese di dispositivi medici: dagli obiettivi e dalla struttura al design system in Figma, fino alla realizzazione in WordPress con il tema Avada.",
+      meta: [["Cliente", "P.B.Pharma Srl"], ["Ruolo", "UX/UI design, sviluppo WordPress"], ["Strumenti", "Figma, WordPress, Avada, WordPress Download Manager"], ["Pubblico", "Operatori sanitari: farmacie, ortopedie, pubbliche assistenze, studi medici, ditte"]],
+      gallery: "none", imgs: [["pb-cover", "Pagina Catalogo di PB Pharma: titolo, due pulsanti e la copertina del Catalogo Generale N°12"]] },
+    { id: "skinna", type: "project", cat: "logo", title: "Skinna", sub: "Brand identity · Car sharing", cover: "skinna-collage",
+      lead: "Analisi di mercato e progettazione della brand identity per un car sharing elettrico made in Torino. Il toro è il simbolo di Torino, le corna elettriche sono il simbolo di sostenibilità.",
+      meta: [["Contesto", "ITS Piemonte"], ["Ruolo", "Analisi di mercato, brand identity"], ["Font", "Lemon Milk"], ["Applicazioni", "Affissione, social"]],
+      gallery: "pair", imgs: [["skinna-collage", "Skinna: manifesto in una fermata dell'autobus e Mini blu davanti a una piazza di Torino"], ["skinna-panel", "Skinna: logo con il toro, font Lemon Milk e prove colore del simbolo"]] },
+    { id: "gambit", type: "piece", cat: "grafiche", title: "The Queen's Gambit", sub: "Ritratto digitale | Photoshop",
+      imgs: [["gambit", "Ritratto digitale di una ragazza dai capelli rossi con il titolo The Queen's Gambit"]] },
+    { id: "social", type: "project", cat: "social", title: "SD Solution, Restworld e PB Pharma", sub: "Social media · Instagram", cover: "sd-prompt",
+      lead: "Grafica, editing e pubblicazione dei contenuti social per tre clienti: SD Solution, agenzia di comunicazione, Restworld, start up di comunicazione nel settore HO.RE.CA., e PB Pharma, azienda parafarmaceutica. Da caroselli informativi, tips e curiosità a post per le fiere di settore.",
+      meta: [["Clienti", "SD Solution, Restworld, PB Pharma"], ["Ruolo", "Piano editoriale, grafica, editing, pubblicazione"], ["Canale", "Instagram, Facebook, LinkedIn"], ["Formati", "Caroselli, post singoli, storie"]],
+      clients: [
+        { name: "SD Solution", kind: "Agenzia di comunicazione", text: "Caroselli su AI e digital marketing con un linguaggio visivo riconoscibile, dettato dalla palette cromatica del brand, con il logo sempre in basso a destra. Ogni post apre con un titolo forte e prosegue con la spiegazione nelle slide successive.",
+          imgs: [["sd-abtest", "Post SD Solution: A/B test creativi sui social, con una mano che regge uno smartphone"], ["sd-abtest-slide", "Slide SD Solution: Cos'è un A/B test creativo, con foto di due persone al lavoro su un tablet"], ["sd-prompt", "Post SD Solution: Prompt Design, farsi capire dall'AI, con un robot verde acqua"], ["sd-prompt-slide", "Slide SD Solution: esempio pratico di prompt scarso e prompt efficace, con un cervello 3D"]] },
+        { name: "Restworld", kind: "Start up HO.RE.CA.", text: "Rubriche riconoscibili per il mondo della ristorazione: Rest-how per spiegare, Rest-play per giocare, #DisseilSaggio per le citazioni rilette in chiave ristorazione. Viola e verde acido come palette del brand, titoli in maiuscolo condensato e illustrazioni 3D o disegnate a mano.",
+          imgs: [["rw-robot", "Post Restworld: Hai mai sentito parlare di robot nella ristorazione, con un robot 3D"], ["rw-tfr", "Post Restworld: come funziona il TFR, con una pianta di monete"], ["rw-caccia", "Post Restworld: caccia al tesoro di Restworld, con la Mole Antonelliana"], ["rw-mlk", "Post Restworld #DisseilSaggio: citazione di Martin Luther King rielaborata"], ["rw-dalmasso", "Illustrazione Restworld: Alessandro Dalmasso, fare alta qualità in pasticceria"]] },
+        { name: "PB Pharma", kind: "Azienda parafarmaceutica", text: "Grafiche per gli appuntamenti fieristici dell'azienda: il post per Cosmofarma Exhibition a Bologna e la storia per la Fiera A&T all'Oval Lingotto di Torino.",
+          imgs: [["pb-cosmofarma", "Post PB Pharma: Cosmofarma Exhibition, Bologna Fiere, 8-10 maggio 2026, padiglione 26 stand 47"], ["pb-fiera", "Storia PB Pharma: Fiera A&T, Oval Lingotto Torino, 11-13 febbraio 2026, stand D47"]] }
+      ],
+      imgs: [["sd-prompt", ""]], plan: true },
+    { id: "poster", type: "project", cat: "poster", title: "Afro Punk, Sound Frames, Ci vediamo in Vitto", sub: "Poster · Adobe InDesign e Photoshop", cover: "poster-wall",
+      lead: "Tre poster impaginati in Adobe InDesign: il programma di un festival su più città, una mostra su cinema e musica alla Mole Antonelliana e un evento in piazza Vittorio a Torino. Tre approcci tipografici diversi, dal lettering ritagliato alla grande forma geometrica.",
+      meta: [["Ruolo", "Concept, grafica, impaginazione"], ["Strumenti", "Adobe InDesign e Photoshop"], ["Formato", "Poster verticali"]],
+      gallery: "stack", maxw: 1036, imgs: [["poster-wall", "Tre poster affissi su un muro: Afro Punk 2018, Sound Frames e Ci vediamo in Vitto"]] },
+    { id: "moseca", type: "project", cat: "logo", title: "Moseca", sub: "Brand identity · App musicale", cover: "moseca-collage",
+      lead: "Progettazione e realizzazione di un'app musicale per lo streaming, con due piani: moseca, gratuito, con musica illimitata e contest mensili, e moseca+ a 14,90 € al mese, senza pubblicità, con sconti su vinili e riviste e prevendita di biglietti per concerti e merch.",
+      meta: [["Contesto", "ITS Piemonte"], ["Ruolo", "Brand identity, interfaccia dell'app"], ["Font", "Righteous"], ["Applicazioni", "Schermate dell'app, social"]],
+      gallery: "pair", imgs: [["moseca-collage", "Moseca: schermate dell'app e una ragazza con le cuffie a un concerto"], ["moseca-panel", "Moseca: logo dei due piani, font Righteous e prove colore"]] },
+    { id: "ui-lambo", type: "project", cat: "ux", title: "Concept sito Lamborghini Huracán", sub: "UI/UX · Adobe XD, Figma", cover: "ui-lambo-home",
+      lead: "Concept di sito web dedicato alla Huracán EVO, con navigazione Overview, Exterior, Interior, Engine e Gallery. hero section a tutta larghezza e sezioni di approfondimento con tagli diagonali.",
+      meta: [["Tipo", "Concept personale"], ["Ruolo", "Interfaccia e layout"], ["Strumenti", "Adobe XD, Figma"]],
+      gallery: "stack", maxw: 800, imgs: [["ui-lambo-home", "Home del concept: due Huracán davanti a una villa moderna, titolo Lamborghini Huracán"], ["ui-lambo-interior", "Sezioni Exterior e Interior con tagli diagonali tra foto e testo"]] },
+    { id: "astronaut", type: "piece", cat: "grafiche", title: "Astronaut in space", sub: "Render 3D | Blender",
+      imgs: [["astronaut", "Astronauta 3D bianco con dettagli azzurri su sfondo blu"]] },
+    { id: "apl", type: "project", cat: "logo", title: "Agenzia Piemonte Lavoro", sub: "Brand identity · Centro per l'impiego", cover: "apl-collage",
+      lead: "Brand identity per l'Agenzia Piemonte Lavoro, Centro per l'impiego. Tre forme per tre pubblici: il triangolo per le aziende, il cerchio per le persone, il quadrato per l'agenzia.",
+      meta: [["Contesto", "ITS Piemonte"], ["Ruolo", "Brand identity"], ["Font", "Helvetica"], ["Applicazioni", "Badge NFC, biglietti da visita"]],
+      gallery: "pair", imgs: [["apl-collage", "Agenzia Piemonte Lavoro: badge e biglietti da visita durante un colloquio"], ["apl-panel", "Agenzia Piemonte Lavoro: logo, simboli per aziende, persone e agenzia, font Helvetica"]] },
+    { id: "bauhaus", type: "project", cat: "poster", title: "Bauhaus 100 · GAM Torino", sub: "Poster · Adobe Photoshop", cover: "bauhaus-details",
+      lead: "Poster per Bauhaus 100 alla GAM di Torino, dal 20 novembre al 20 dicembre 2019. Ogni poster accosta una citazione a un ritratto tagliato a collage: Ludwig Mies van der Rohe su fondo arancione, Hannes Meyer su fondo verde.",
+      meta: [["Ruolo", "Concept, grafica"], ["Strumento", "Adobe Photoshop"], ["Formato", "Poster verticali"], ["Evento", "GAM di Torino"]],
+      gallery: "pair", imgs: [["bauhaus-details", "Poster arancione con la citazione God is in the details"], ["bauhaus-organisation", "Poster verde con la citazione di Hannes Meyer sull'organizzazione"]] },
+    { id: "parrot", type: "piece", cat: "grafiche", title: "Parrot Low poly", sub: "Illustrazione vettoriale | Illustrator",
+      imgs: [["parrot", "Ara low poly con piume gialle, arancioni e blu su sfondo giallo"]] },
+    { id: "ui-music", type: "project", cat: "ux", title: "App di streaming musicale", sub: "UI/UX · Tema scuro", cover: "ui-music-app",
+      lead: "Interfaccia desktop per un'app di streaming musicale in tema scuro: menu laterale, playlist in evidenza, ascolti recenti e player sempre visibile in basso.",
+      meta: [["Tipo", "Concept personale"], ["Ruolo", "Interfaccia e layout"], ["Strumenti", "Adobe XD, Figma"]],
+      gallery: "stack", maxw: 760, imgs: [["ui-music-app", "Interfaccia scura con la playlist Power Hits, ascolti recenti e player in basso"]] },
+    { id: "strange", type: "piece", cat: "grafiche", title: "Stranger Things", sub: "Ritratto digitale | Photoshop",
+      imgs: [["strange-things", "Ritratto di una ragazza con un cono gelato su sfondo arancione, titolo Stranger Things"]] },
+    { id: "lebron", type: "piece", cat: "grafiche", title: "Basketball & Swoosh", sub: "Illustrazione vettoriale | Illustrator",
+      imgs: [["lebron", "Giocatore di basket disteso su uno swoosh con un cuscino, su fondo bordeaux"]] },
+    { id: "drink", type: "piece", cat: "grafiche", title: "Apple", sub: "Illustrazione vettoriale | Illustrator",
+      imgs: [["drink-teal", "Illustrazione di un frutto con cannuccia e onda, su fondo petrolio"], ["drink-white", "Stessa illustrazione su fondo bianco con palette di colori"], ["drink-teal-b", "Variante dell'illustrazione su fondo petrolio"]] },
+    { id: "sneaker", type: "piece", cat: "grafiche", title: "Sneaker Low Poly", sub: "Illustrazione vettoriale | Illustrator",
+      imgs: [["sneaker", "Sneaker alta in stile pop art con campiture colorate"]] },
+    { id: "fox", type: "piece", cat: "grafiche", title: "Fox", sub: "Ritratto digitale | Photoshop",
+      imgs: [["fox", "Volpe su sfondo grigio e bianco dipinto in digitale"]] }
+  ];
+
+  var byId = {}; ITEMS.forEach(function (it) { byId[it.id] = it; });
+  var PROJECTS = ITEMS.filter(function (i) { return i.type === "project"; });
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  function imgTag(name, alt, extra) {
+    var s = SIZE[name];
+    return '<img src="img/' + name + '.webp" width="' + s[0] + '" height="' + s[1] + '" alt="' + esc(alt) + '" loading="lazy" decoding="async"' + (extra || "") + '>';
+  }
+
+  /* ---------- case study PB Pharma ---------- */
+  var TIPI = ["Farmacia", "Ortopedia", "Pubblica Assistenza", "Studio Medico", "Ditta", "Altro"];
+  var MENU = ["Home", "Azienda", "Catalogo", "Garanzie e resi", "Shop B2B", "Download risorse", "News", "Contatti"];
+
+  function sec(eyebrow, title, body) {
+    return '<section class="cs-sec"><header><p class="eyebrow">' + eyebrow + '</p><h2>' + title + '</h2></header><div class="cs-body">' + body + '</div></section>';
+  }
+  function secFull(eyebrow, title, intro, full) {
+    return '<section class="cs-sec"><header><p class="eyebrow">' + eyebrow + '</p><h2>' + title + '</h2></header><div class="cs-body">' + intro + '</div><div class="cs-full">' + full + '</div></section>';
+  }
+  function swatch(name, hex, role) { return '<div><i style="--c:' + hex + '"></i><span><b>' + name + '</b>' + hex.toUpperCase() + '<br>' + role + '</span></div>'; }
+
+  var PBSHOTS = [
+    { k: "home", tab: "Homepage", img: "pb-home", label: "Homepage · Desktop", alt: "Homepage di pbpharma.it: slogan La salute, un valore primario, vantaggi, linee prodotto, Catalogo N°12, ultime news e newsletter",
+      note: "La home apre con lo slogan «La salute, un valore primario» e due azioni: le linee prodotto e lo Shop B2B. Sotto ci sono tre vantaggi (consegna in 48h, assistenza post-vendita, innovazione), le cinque linee, il Catalogo N°12, le ultime news e la newsletter." },
+    { k: "cat", tab: "Pagina Catalogo", img: "pb-cat", label: "Pagina Catalogo · Desktop", alt: "Pagina Catalogo di pbpharma.it: titolo Catalogo Generale N°12, carosello delle linee prodotto e catalogo sfogliabile",
+      note: "La pagina Catalogo apre con il titolo e le due azioni principali, presenta le linee in un carosello di schede e mostra il catalogo sfogliabile online, pagina per pagina." },
+    { k: "foot", tab: "Footer", img: "pb-footer", label: "Footer · Desktop", alt: "Footer di pbpharma.it con colonne Azienda, Linee prodotto, Area professionisti, Assistenza, Contatti, Orari e sedi",
+      note: "Il footer ordina le informazioni in colonne: Azienda, Linee prodotto, Area professionisti, Assistenza, Contatti con orari, sede operativa e sede legale. Sotto ci sono la nota per gli operatori sanitari, privacy e cookie policy e i social." },
+    { k: "form", tab: "Form newsletter", img: "pb-form", label: "Form di iscrizione alla newsletter · Popup", form: true, alt: "Popup di iscrizione alla newsletter di PB Pharma con i campi email, azienda, tipologia, contatto, cellulare, regione, provincia e città",
+      note: "Il form si apre in un popup dal pulsante ISCRIVITI!. I campi con asterisco sono obbligatori: email, tipologia azienda, regione, provincia e città. La provincia resta bloccata finché non si sceglie la regione." }
+  ];
+
+  function renderPB() {
+    var tabs = PBSHOTS.map(function (x, i) {
+      return '<button class="chip" type="button" role="tab" aria-selected="' + (i === 0) + '" data-pbtab="' + x.k + '">' + x.tab + "</button>";
+    }).join("");
+    var panes = PBSHOTS.map(function (x, i) {
+      return '<div data-pbpane="' + x.k + '"' + (i ? " hidden" : "") + '><p class="pb-label">' + x.label + '</p><figure class="pb-shot' + (x.form ? " pb-shot--form" : "") + '">' + imgTag(x.img, x.alt) + '</figure><p class="pb-note">' + x.note + "</p></div>";
+    }).join("");
+    var frames = '<div class="pb"><div class="pb-tabs" role="tablist" aria-label="Pagine del sito">' + tabs + "</div>" + panes + "</div>";
+
+    var brief = sec("Brief", "Portare l'operatore al catalogo in un clic",
+      '<p>P.B.Pharma è un\'azienda torinese di dispositivi medici e articoli sanitari: oltre 3000 articoli divisi in 5 linee. Il Catalogo Generale N°12 si sfoglia online e si scarica in PDF, e c\'è uno shop B2B dedicato. La pagina Catalogo deve fare da ponte tra le due cose.</p>' +
+      '<ul class="cs-list"><li>Rendere subito visibili le due azioni principali: scaricare il catalogo e andare allo shop B2B.</li><li>Far capire in pochi secondi come sono organizzate le cinque linee.</li><li>Raccogliere iscrizioni alla newsletter già segmentate per tipo di attività e regione.</li></ul>' +
+      '<div><p class="pb-label" style="margin-top:6px">Chi usa la pagina</p><div class="chips-s">' + TIPI.map(function (t) { return "<span>" + t + "</span>"; }).join("") + '</div></div>');
+
+    var ia = secFull("Struttura", "Cinque blocchi, in ordine di importanza",
+      '<p>Prima di disegnare ho fissato cosa viene prima e perché. Il menu è quello del sito, la pagina Catalogo è la terza voce.</p>',
+      '<div class="ia"><div><h3>Menu principale</h3><div class="menu">' + MENU.map(function (m) { return "<span" + (m === "Catalogo" ? ' class="on"' : "") + ">" + m + "</span>"; }).join("") + '<small>Azienda contiene la sottovoce Certificazioni.</small></div></div>' +
+      '<div><h3>Struttura della pagina</h3><ol>' +
+      '<li><span><b>Titolo e azioni</b>Il titolo, «Oltre 3000 articoli - 5 linee» e i due pulsanti, visibili senza scorrere.</span></li>' +
+      '<li><span><b>Introduzione</b>«Scopri le nostre linee prodotto», con una foto e qualche riga sull\'azienda.</span></li>' +
+      '<li><span><b>Le linee</b>Un carosello di schede con foto, nome e link a ogni linea.</span></li>' +
+      '<li><span><b>Catalogo sfogliabile</b>Il Catalogo Generale N°12 da sfogliare online.</span></li>' +
+      '<li><span><b>Newsletter e footer</b>Un solo pulsante per iscriversi, poi contatti, sedi e note legali.</span></li></ol></div></div>');
+
+    var tokens = secFull("Design system", "Colori, testi e spazi decisi prima di disegnare",
+      '<p>In Figma ho definito variabili e stili prima delle pagine: un blu istituzionale per le azioni, un blu notte per i titoli e grigi freddi per testi, fondi e bordi. Un solo font, Montserrat, per titoli e testi, con pulsanti a pillola.</p>',
+      '<div class="pb tok"><div class="sw">' +
+      swatch("Blu PB", "#0057a8", "Pulsanti, link") + swatch("Blu notte", "#0b2a4a", "Titoli") + swatch("Ardesia", "#3d4b5c", "Testo") +
+      swatch("Nebbia", "#f4f7fb", "Fondi di sezione") + swatch("Linea", "#cfd9e6", "Bordi") + swatch("Grigio blu", "#7a8ca3", "Pulsante secondario") + '</div>' +
+      '<div class="type-s"><div class="tr"><small>Titolo 1<br>Montserrat 600 · 57/63</small><span style="font:600 clamp(30px,5vw,57px)/1.1 var(--pb-head);letter-spacing:-.015em;color:var(--pb-ink)">Catalogo Generale N°12</span></div>' +
+      '<div class="tr"><small>Titolo 2<br>Montserrat 600 · 40/46</small><span style="font:600 clamp(24px,3.4vw,40px)/1.15 var(--pb-head);letter-spacing:-.01em;color:var(--pb-ink)">Scopri le nostre linee prodotto</span></div>' +
+      '<div class="tr"><small>Testo<br>Montserrat 400 · 16/26</small><span style="font:400 16px/1.6 var(--pb-body);color:var(--pb-slate)">Prodotti sanitari per il settore medicale, dalla riabilitazione all\'emergenza.</span></div>' +
+      '<div class="tr"><small>Menu<br>Montserrat 400 · 16</small><span style="font:400 16px var(--pb-body);letter-spacing:1px;color:#000">Home · Azienda · Catalogo</span></div>' +
+      '<div class="tr"><small>Pulsante<br>Montserrat 600 · 16</small><span style="font:600 16px var(--pb-body);color:var(--pb-blue)">Scarica il catalogo</span></div></div>' +
+      '<div class="sp"><div><i style="width:8px;height:8px"></i>8</div><div><i style="width:16px;height:16px"></i>16</div><div><i style="width:24px;height:24px"></i>24</div><div><i style="width:32px;height:32px"></i>32</div><div><i style="width:48px;height:48px"></i>48</div><div><i style="width:64px;height:64px"></i>64</div><div><i style="width:96px;height:96px"></i>96</div>' +
+      '<div><span class="r" style="border-radius:999px;width:96px;height:48px"></span>Pulsanti: pillola</div></div></div>');
+
+    var comps = secFull("Componenti", "Pulsanti e schede linea",
+      '<p>Ogni pulsante ha gli stati disegnati: normale, hover, focus e disattivato. Le schede delle linee sono un solo componente, riusato per ognuna delle cinque. Nel form di iscrizione un campo dipende da un altro: la Provincia si sblocca solo dopo aver scelto la Regione.</p>',
+      '<div class="pb"><p class="pb-label">Pulsante</p><div class="btn-states"><div><span class="bs">Scarica il catalogo</span>Normale</div><div><span class="bs h">Scarica il catalogo</span>Hover</div><div><span class="bs f">Scarica il catalogo</span>Focus</div><div><span class="bs d">Scarica il catalogo</span>Disattivato</div><div><span class="bs g">Vai allo Shop B2B</span>Secondario</div></div></div>');
+
+    var motion = sec("Animazioni", "Poco movimento, sempre con uno scopo",
+      '<p>Il movimento serve a scorrere i contenuti e a confermare un\'azione, senza rallentare chi cerca un articolo. Dove i contenuti scorrono da soli c\'è sempre un comando per fermarli.</p>');
+
+    var wp = sec("Realizzazione", "Da Figma a WordPress",
+      '<p>Il sito è costruito su WordPress con il tema Avada e Fusion Builder. Ho riportato nel tema gli stessi token e componenti disegnati in Figma.</p>');
+
+    return '<div class="cs">' + frames + brief + ia + tokens + comps + motion + wp + '</div>';
+  }
+
+  /* ---------- work grid ---------- */
+  var filter = "all";
+  function count(cat) { return ITEMS.reduce(function (n, i) { return n + (cat === "all" || i.cat === cat ? (i.clients ? i.clients.length : 1) : 0); }, 0); }
+
+  function renderGrid() {
+    $("#grid").innerHTML = ITEMS.map(function (it) {
+      var cover = it.cover || it.imgs[0][0];
+      var alt = it.type === "project" ? it.title : it.imgs[0][1];
+      var inner = '<span class="ph">' + imgTag(cover, alt) + '</span><span class="cap"><strong>' + esc(it.title) + '</strong><em>' + esc(it.sub) + '</em></span>';
+      var el = it.type === "project"
+        ? '<a class="card" href="#p-' + it.id + '" data-go="p-' + it.id + '">' + inner + '</a>'
+        : '<button class="card" type="button" data-piece="' + it.id + '" aria-label="' + esc(it.title + ", " + it.sub + ": apri l\'anteprima") + '">' + inner + '</button>';
+      return '<li class="item rv" data-cat="' + it.cat + '">' + el + '</li>';
+    }).join("");
+  }
+
+  function renderFilters() {
+    var all = [{ id: "all", name: "Tutti" }].concat(CATS);
+    $("#filters").innerHTML = all.map(function (c) {
+      return '<button type="button" class="chip" data-filter="' + c.id + '" aria-pressed="' + (c.id === filter) + '">' + esc(c.name) + ' <span>' + count(c.id) + '</span></button>';
+    }).join("");
+  }
+
+  function applyFilter(cat) {
+    filter = cat;
+    document.querySelectorAll("#grid .item").forEach(function (li) { li.hidden = !(cat === "all" || li.dataset.cat === cat); });
+    document.querySelectorAll("#filters .chip").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.filter === cat)); });
+    var n = count(cat);
+    $("#h-work").textContent = cat === "grafiche" ? "Lavori Personali" : "Lavori";
+    $("#work-count").textContent = (cat === "all"
+      ? n + " lavori tra brand identity, grafiche, interfacce, social e poster."
+      : n + (n === 1 ? " lavoro" : " lavori") + " in " + catName[cat] + ".");
+  }
+
+  /* ---------- hero: scala in movimento continuo ---------- */
+  var ROWS = [
+    { id: "moseca", t: "Moseca", s: "Brand identity", img: "moseca-collage", pos: "50% 56%", bg: "#d8402c", st: "#f4d9b6", alt: "Moseca: app musicale" },
+    { id: "skinna", t: "Skinna", s: "Brand identity", img: "skinna-collage", pos: "50% 80%", bg: "#1250a8", st: "#f2e63a", alt: "Skinna: car sharing elettrico" },
+    { id: "houseeng", t: "Houseeng", s: "Brand identity", img: "houseeng-collage", pos: "50% 36%", bg: "#e25a28", st: "#3b5b92", alt: "Houseeng: brand immobiliare" },
+    { id: "pb-pharma", t: "PB Pharma", s: "UI/UX", img: "pb-cover", pos: "50% 16%", bg: "#0f4c81", st: "#d6e0e8", alt: "PB Pharma: pagina catalogo" },
+    { id: "apl", t: "Agenzia Piemonte Lavoro", s: "", img: "apl-collage", pos: "50% 44%", bg: "#2f64a8", st: "#f26a2e", alt: "Agenzia Piemonte Lavoro: identità" },
+    { id: "ui-lambo", t: "Lamborghini", s: "UI/UX", img: "ui-lambo-home", pos: "50% 50%", bg: "#161616", st: "#f26a1b", alt: "Concept sito Lamborghini Huracán" },
+    { id: "poster", t: "Poster", s: "Adobe InDesign", img: "poster-wall", pos: "50% 38%", bg: "#3f5d52", st: "#e9e4d8", alt: "Poster: Afro Punk, Sound Frames, Ci vediamo in Vitto" }
+  ];
+  var stair = null, phase = 0, lastTs = 0, STEP = 3.4, motionOK = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  function buildStair() {
+    stair = $("#stair");
+    stair.innerHTML = ROWS.map(function (r, k) {
+      var sz = SIZE[r.img];
+      return '<a class="row" href="#p-' + r.id + '" data-go="p-' + r.id + '" aria-label="' + esc(r.alt) + '" style="--k:' + k + ";--bg:" + r.bg + ";--stripe:" + r.st + ";--pos:" + r.pos + '"><span class="rin"><span class="wide"><img src="img/' + r.img + '.webp" width="' + sz[0] + '" height="' + sz[1] + '" alt=""></span><span class="sq"><span class="l">' + esc(r.t) + (r.s ? "<small>" + esc(r.s) + "</small>" : "") + "</span></span></span></a>";
+    }).join("");
+  }
+  function rotateStair() {
+    var n = ROWS.length;
+    Array.prototype.forEach.call(stair.children, function (el) {
+      var k = parseInt(el.style.getPropertyValue("--k"), 10);
+      el.style.setProperty("--k", k === 0 ? n - 1 : k - 1);
+    });
+  }
+  function tick(ts) {
+    requestAnimationFrame(tick);
+    var dt = Math.min(0.05, (ts - lastTs) / 1000); lastTs = ts;
+    if (!motionOK || document.hidden || $("#view-home").hidden || window.scrollY > window.innerHeight * 1.2) return;
+    phase += dt / STEP;
+    if (phase >= 1) { phase -= 1; rotateStair(); }
+    stair.style.setProperty("--s", phase.toFixed(4));
+  }
+
+  /* ---------- sezione scura: schede ---------- */
+  var BENTO = [
+    ["full", [{ cat: "logo", t: "Identità che si riconoscono.", p: "Dal marchio a palette, font e mockup: un sistema coerente per social, stampa e web.", img: "skinna-collage", pos: "50% 55%" }]],
+    ["pair", [{ cat: "grafiche", t: "Illustrazioni e ritratti.", p: "Vettoriale, low poly, ritratti digitali e render 3D.", img: "astronaut", pos: "50% 40%" }, { cat: "ux", t: "Interfacce progettate e costruite.", p: "Dal wireframe in Figma al sito in WordPress.", img: "pb-cover", pos: "50% 0%" }]],
+    ["pair", [{ cat: "social", t: "Un piano, ogni settimana.", p: "Piano editoriale, grafica, editing e pubblicazione su Instagram.", img: "sd-prompt", pos: "50% 10%" }, { cat: "poster", t: "Poster che si leggono da lontano.", p: "Impaginazione in Adobe InDesign per mostre, festival ed eventi.", img: "poster-wall", pos: "50% 30%" }]]
+  ];
+  var ARROW = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5m0 0H5.5M11 5v5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function buildStack() {
+    $("#stack").innerHTML = BENTO.map(function (row, i) {
+      return '<div class="srow srow--' + row[0] + '" style="--i:' + i + '">' + row[1].map(function (c, j) {
+        var sz = SIZE[c.img];
+        return '<article class="bcard rv" style="--d:' + (j * 0.1) + 's"><div class="btxt"><h3>' + esc(c.t) + "</h3><p>" + esc(c.p) + '</p><button class="btn btn--compact" type="button" data-skill="' + c.cat + '">Vedi i lavori ' + ARROW + '</button></div><div class="shot" style="--pos:' + c.pos + '"><img src="img/' + c.img + '.webp" width="' + sz[0] + '" height="' + sz[1] + '" alt="" loading="lazy"></div></article>';
+      }).join("") + "</div>";
+    }).join("");
+  }
+
+  /* ---------- fasce che scorrono + griglia inclinata ---------- */
+  var MQGO = { "skinna-collage": "p-skinna", "moseca-collage": "p-moseca", "houseeng-collage": "p-houseeng", "apl-collage": "p-apl", "pb-cover": "p-pb-pharma", "ui-lambo-home": "p-ui-lambo", "poster-wall": "p-poster", "sd-prompt": "p-social", "gambit": "gambit", "parrot": "parrot", "astronaut": "astronaut", "lebron": "lebron" };
+  function mqHtml(list, dup) {
+    return list.map(function (n) {
+      var g = MQGO[n], sz = SIZE[n], isP = g.indexOf("p-") !== 0;
+      var attrs = (isP ? 'href="#work" data-piece="' + g + '"' : 'href="#' + g + '" data-go="' + g + '"') + (dup ? ' aria-hidden="true" tabindex="-1"' : "");
+      return '<a class="mq-t" ' + attrs + '><img src="img/' + n + '.webp" width="' + sz[0] + '" height="' + sz[1] + '" alt="' + (dup ? "" : esc(n.replace(/-/g, " "))) + '" loading="lazy"></a>';
+    }).join("");
+  }
+  function buildMarquee() {
+    var l1 = ["skinna-collage", "moseca-collage", "houseeng-collage", "apl-collage", "pb-cover", "ui-lambo-home"];
+    var l2 = ["poster-wall", "sd-prompt", "gambit", "parrot", "astronaut", "lebron"];
+    $("#mq1").innerHTML = '<div class="mq-track">' + mqHtml(l1, false) + mqHtml(l1, true) + "</div>";
+    $("#mq2").innerHTML = '<div class="mq-track">' + mqHtml(l2, false) + mqHtml(l2, true) + "</div>";
+    var sp = ["skinna-collage", "moseca-collage", "houseeng-collage", "apl-collage", "pb-cover", "ui-lambo-home", "poster-wall", "sd-prompt", "gambit", "parrot", "astronaut", "lebron"];
+    $("#spark-grid").innerHTML = sp.map(function (n) { var z = SIZE[n]; return '<img src="img/' + n + '.webp" width="' + z[0] + '" height="' + z[1] + '" alt="" loading="lazy">'; }).join("");
+  }
+
+  /* ---------- header scuro sopra le sezioni nere + ingresso sfocato → nitido ---------- */
+  var topEl = $(".top");
+  function hdr() {
+    var y = 40, on = false;
+    document.querySelectorAll("[data-dark]").forEach(function (d) {
+      var r = d.getBoundingClientRect(), ratio = parseFloat(d.getAttribute("data-dark-ratio") || "1");
+      if (r.top <= y && r.top + r.height * ratio >= y) on = true;
+    });
+    topEl.classList.toggle("dk", on);
+  }
+  window.addEventListener("scroll", hdr, { passive: true });
+  var rvIO = null;
+  function setupReveal() {
+    if (!("IntersectionObserver" in window) || !motionOK) return;
+    document.documentElement.classList.add("rv-on");
+    rvIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rvIO.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
+    document.querySelectorAll(".rv").forEach(function (el) { rvIO.observe(el); });
+  }
+
+  /* ---------- skills + footer ---------- */
+  function renderSkills() {
+    $("#foot-cats").innerHTML = CATS.map(function (c) {
+      return '<li><button class="lnk" type="button" data-skill="' + c.id + '">' + esc(c.name) + "</button></li>";
+    }).join("");
+  }
+
+  /* ---------- detail ---------- */
+  function renderClients(it) {
+    return it.clients.map(function (c, i) {
+      var figs = c.imgs.map(function (im) {
+        var z = SIZE[im[0]];
+        return '<figure style="--fl:' + (z[0] / z[1]).toFixed(3) + '">' + imgTag(im[0], im[1]) + "</figure>";
+      }).join("");
+      return '<section class="client" aria-labelledby="h-c' + i + '"><header class="client-head"><div><p class="eyebrow" style="margin:0 0 12px">' + esc(c.kind) + '</p><h2 id="h-c' + i + '">' + esc(c.name) + "</h2></div><p>" + esc(c.text) + '</p></header><div class="gallery gallery--row">' + figs + "</div></section>";
+    }).join("");
+  }
+  function renderDetail(it) {
+    var meta = it.meta.map(function (m) { return "<dt>" + esc(m[0]) + "</dt><dd>" + esc(m[1]) + "</dd>"; }).join("");
+    var figs = it.imgs.map(function (im) {
+      var s = SIZE[im[0]], ratio = (s[0] / s[1]).toFixed(3);
+      var st = it.gallery === "stack" ? "--maxw:" + Math.round(s[0] * (it.maxw && it.maxw < s[0] * 1.3 ? it.maxw / s[0] : 1.3)) + "px" : "--fl:" + ratio;
+      return '<figure style="' + st + '">' + imgTag(im[0], im[1]) + "</figure>";
+    }).join("");
+    var plan = "";
+    if (it.plan) {
+      plan = '<section class="table-wrap" aria-labelledby="h-plan"><h2 class="t-strong" id="h-plan" style="font-size:24px">Piano editoriale mensile</h2><p class="sub">Tre pubblicazioni a settimana, alternando caroselli, post singoli e reel.</p><table><thead><tr><th>Settimana</th><th>Giorno</th><th>Formato</th><th>Tema</th></tr></thead><tbody>' +
+        PLAN.map(function (w) {
+          return w[1].map(function (r, i) {
+            return '<tr class="' + (i === 0 ? "wstart" : "") + '">' + (i === 0 ? '<td class="wk" rowspan="3">' + w[0] + "</td>" : "") + "<td>" + r[0] + "</td><td>" + r[1] + "</td><td>" + r[2] + "</td></tr>";
+          }).join("");
+        }).join("") + "</tbody></table></section>";
+    }
+    var idx = PROJECTS.indexOf(it), nx = PROJECTS[(idx + 1) % PROJECTS.length];
+    return '<article class="detail"><button class="back" type="button" data-go="work"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3m0 0 4.5-4.5M3 8l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Tutti i lavori</button>' +
+      '<p class="eyebrow" style="margin:28px 0 0">' + esc(catName[it.cat]) + '</p><h1 class="t-editor" id="detail-title" tabindex="-1">' + esc(it.title) + '</h1>' +
+      '<div class="detail-head"><p class="lead">' + esc(it.lead) + '</p><dl class="meta">' + meta + '</dl></div>' +
+      (it.custom ? renderPB() : it.clients ? renderClients(it) + plan : '<div class="gallery gallery--' + it.gallery + '">' + figs + '</div>' + plan) +
+      '<a class="next" href="#p-' + nx.id + '" data-go="p-' + nx.id + '"><span class="nimg">' + imgTag(nx.cover, "") + '</span><span class="ntxt"><span>Prossimo lavoro · ' + esc(catName[nx.cat]) + '</span><strong>' + esc(nx.title) + '</strong></span></a></article>';
+  }
+
+  /* ---------- views / routing ---------- */
+  var cur = null;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function setHash(h) { try { if (location.hash !== "#" + h) location.hash = h; } catch (e) {} }
+
+  function showHome(anchor, fromHash) {
+    var wasDetail = !$("#view-detail").hidden;
+    $("#view-detail").hidden = true; $("#view-home").hidden = false;
+    cur = anchor || "home";
+    if (!fromHash) setHash(cur);
+    var target = anchor && anchor !== "home" ? document.getElementById(anchor) : null;
+    var go = function () {
+      if (target) target.scrollIntoView({ behavior: reduce || wasDetail ? "auto" : "smooth", block: "start" });
+      else window.scrollTo(0, 0);
+    };
+    if (wasDetail) requestAnimationFrame(go); else go();
+  }
+
+  function showProject(id, fromHash) {
+    var it = byId[id];
+    if (!it || it.type !== "project") return showHome(null, fromHash);
+    $("#detail-mount").innerHTML = renderDetail(it);
+    $("#view-home").hidden = true; $("#view-detail").hidden = false;
+    cur = "p-" + id;
+    if (!fromHash) setHash(cur);
+    window.scrollTo(0, 0);
+    var h = $("#detail-title"); if (h) h.focus({ preventScroll: true });
+  }
+
+  function route() {
+    var h = (location.hash || "").slice(1);
+    if (h === cur) return;
+    if (h.indexOf("p-") === 0) return showProject(h.slice(2), true);
+    var piece = byId[h];
+    if (piece && piece.type === "piece") { showHome("work", true); return openLb(piece.id); }
+    showHome(h && document.getElementById(h) ? h : null, true);
+  }
+
+  /* ---------- lightbox ---------- */
+  var lb = $("#lb"), lbItem = null, lbI = 0, lbOpener = null;
+  function paintLb() {
+    var im = lbItem.imgs[lbI], s = SIZE[im[0]];
+    var el = $("#lb-img"); el.src = "img/" + im[0] + ".webp"; el.alt = im[1]; el.width = s[0]; el.height = s[1];
+    $("#lb-cap").innerHTML = "<b>" + esc(lbItem.title) + "</b>" + esc(lbItem.sub) + (lbItem.imgs.length > 1 ? " · " + (lbI + 1) + " di " + lbItem.imgs.length : "");
+    var multi = lbItem.imgs.length > 1;
+    $("#lb-prev").hidden = !multi; $("#lb-next").hidden = !multi;
+  }
+  function openLb(id) {
+    lbItem = byId[id]; lbI = 0; paintLb();
+    if (lb.showModal) { if (!lb.open) lb.showModal(); } else lb.setAttribute("open", "");
+  }
+  function stepLb(d) { lbI = (lbI + d + lbItem.imgs.length) % lbItem.imgs.length; paintLb(); }
+
+  /* ---------- events ---------- */
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    var go = t.closest("[data-go]");
+    if (go) {
+      e.preventDefault();
+      var g = go.dataset.go;
+      if (g.indexOf("p-") === 0) showProject(g.slice(2)); else showHome(g);
+      return;
+    }
+    var tab = t.closest("[data-pbtab]");
+    if (tab) {
+      var which = tab.dataset.pbtab;
+      document.querySelectorAll("[data-pbtab]").forEach(function (b) { b.setAttribute("aria-selected", String(b === tab)); });
+      document.querySelectorAll("[data-pbpane]").forEach(function (p) { p.hidden = p.dataset.pbpane !== which; });
+      return;
+    }
+    var f = t.closest("[data-filter]");
+    if (f) { applyFilter(f.dataset.filter); return; }
+    var s = t.closest("[data-skill]");
+    if (s) { applyFilter(s.dataset.skill); showHome("work"); return; }
+    var p = t.closest("[data-piece]");
+    if (p) { e.preventDefault(); lbOpener = p; openLb(p.dataset.piece); return; }
+  });
+  window.addEventListener("hashchange", route);
+  $("#lb-close").addEventListener("click", function () { lb.close(); });
+  $("#lb-prev").addEventListener("click", function () { stepLb(-1); });
+  $("#lb-next").addEventListener("click", function () { stepLb(1); });
+  lb.addEventListener("click", function (e) { if (e.target === lb || e.target.classList.contains("lb-in")) lb.close(); });
+  lb.addEventListener("keydown", function (e) {
+    if (!lbItem || lbItem.imgs.length < 2) return;
+    if (e.key === "ArrowLeft") stepLb(-1); if (e.key === "ArrowRight") stepLb(1);
+  });
+  lb.addEventListener("close", function () { if (lbOpener && document.contains(lbOpener)) lbOpener.focus(); lbOpener = null; });
+
+  $("#copy-mail").addEventListener("click", function () {
+    var txt = $("#mail").textContent, btn = this, st = $("#copy-status");
+    function done(ok) {
+      btn.textContent = ok ? "Email copiata" : "Seleziona e copia l'email";
+      st.textContent = ok ? "Email copiata negli appunti" : "Copia non riuscita, seleziona il testo dell'email";
+      if (!ok) { var r = document.createRange(); r.selectNodeContents($("#mail")); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+      setTimeout(function () { btn.textContent = "Copia email"; }, 2200);
+    }
+    try { navigator.clipboard.writeText(txt).then(function () { done(true); }, function () { done(false); }); }
+    catch (err) { done(false); }
+  });
+
+  /* ---------- init ---------- */
+  buildStair(); buildStack(); buildMarquee(); renderGrid(); renderFilters(); renderSkills(); applyFilter("all"); setupReveal(); hdr(); requestAnimationFrame(tick);
+  route();
+})();
+</script>
+
+</body>
+</html>
